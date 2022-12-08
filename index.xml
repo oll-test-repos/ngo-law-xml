@@ -15,23 +15,23 @@
     </canonical-urls>
     <history-start>2018-03-05</history-start>
   </meta>
-  <xi:include href="./us/ca/cities/san-mateo/charter/index.xml"/>
-  <xi:include href="./us/ca/cities/san-mateo/code/index.xml"/>
-  <collection name="us/ca/cities/san-mateo/ordinances">
+  <xi:include href="./us/ngo/oll/charter/index.xml"/>
+  <xi:include href="./us/ngo/oll/code/index.xml"/>
+  <collection name="us/ngo/oll/ordinances">
     <heading>Ordinances</heading>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2022/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2021/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2020/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2019/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2018/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2017/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2016/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2015/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2014/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2013/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2012/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2011/index.xml"/>
-    <xi:include href="./us/ca/cities/san-mateo/ordinances/2010/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2022/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2021/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2020/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2019/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2018/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2017/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2016/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2015/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2014/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2013/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2012/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2011/index.xml"/>
+    <xi:include href="./us/ngo/oll/ordinances/2010/index.xml"/>
   </collection>
-  <xi:include href="./us/ca/cities/san-mateo/drafting-manual/index.xml"/>
+  <xi:include href="./us/ngo/oll/drafting-manual/index.xml"/>
 </library>       
