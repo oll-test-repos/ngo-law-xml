@@ -97,7 +97,7 @@ build_script:
       $env:FLAG = if ($env:APPVEYOR_PULL_REQUEST_NUMBER -eq $null) { "--deploy" }
   - ps: >-
       If ($env:PRE_PUBLISH_ENABLED -eq $True){
-        $run_pre_build = $env:PYTHON + '\python.exe -m oll.tools.cli ci prepare-preview --partner $env:PARTNER_NAMESPACE
+        $run_pre_build = $env:PYTHON + '\python.exe -m oll.tools.cli ci prepare-preview --partner $env:PARTNER_NAMESPACE';
         iex $run_pre_build;
       };
   - "%PYTHON%\\python.exe  -m oll.tools.cli ci build-preview --library-root .. --auth ../law %FLAG%"
