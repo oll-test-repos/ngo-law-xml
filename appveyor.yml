@@ -1,5 +1,5 @@
-build_cloud: Ubuntu-OLL Docker
-image: tibi-test-1
+build_cloud: Ubuntu-OLL
+image: Ubuntu
 
 environment:
   matrix:
