@@ -1,4 +1,4 @@
-build_cloud: Ubuntu-OLL Docker
+build_cloud: Ubuntu-Docker
 image: Ubuntu-20-Full
 
 environment:
