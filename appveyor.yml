@@ -1,5 +1,5 @@
-build_cloud: Ubuntu-OLL
-image: Ubuntu
+build_cloud: Ubuntu-OLL Docker
+image: Linux-Publish-Law
 
 environment:
   matrix:
