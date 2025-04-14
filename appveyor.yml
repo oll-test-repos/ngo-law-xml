@@ -2,7 +2,7 @@ build_cloud: Ubuntu-OLL
 image: Ubuntu
 
 build_script:
-  - sh: docker run tibor/oll-1
+  - sh: docker run oll/archive-automation
 
 notifications:
   - provider: Slack
