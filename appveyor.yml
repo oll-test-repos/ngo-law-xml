@@ -1,8 +1,11 @@
 build_cloud: Ubuntu-OLL
 image: Ubuntu
 
+# Do not build feature branch with open Pull Requests
+skip_branch_with_pr: true
+
 build_script:
-  - sh: docker run oll/archive-automation
+  - sh: docker run -e GH_SSH_PRIVATE_KEY=$env:GH_SSH_PRIVATE_KEY oll/archive-automation
 
 notifications:
   - provider: Slack
