@@ -5,7 +5,7 @@ image: Ubuntu
 skip_branch_with_pr: true
 
 build_script:
-  - sh: docker run -e GH_SSH_PRIVATE_KEY=$env:GH_SSH_PRIVATE_KEY oll/archive-automation
+  - sh: docker run --mount type=volume,src=$APPVEYOR_BUILD_FOLDER,dst=/home/oll/law-xml -e GH_SSH_PRIVATE_KEY=$GH_SSH_PRIVATE_KEY oll/archive-automation
 
 notifications:
   - provider: Slack
