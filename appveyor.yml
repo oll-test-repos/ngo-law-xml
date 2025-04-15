@@ -4,6 +4,9 @@ image: Ubuntu
 # Do not build feature branch with open Pull Requests
 skip_branch_with_pr: true
 
+on_finish:
+  - sh: mv -r $APPVEYOR_BUILD_FOLDER /home/oll/Documents
+
 build_script:
   - sh: docker run -e GH_SSH_PRIVATE_KEY=$env:GH_SSH_PRIVATE_KEY oll/archive-automation
 
