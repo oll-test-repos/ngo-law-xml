@@ -4,8 +4,11 @@ image: Ubuntu
 # Do not build feature branch with open Pull Requests
 skip_branch_with_pr: true
 
+on_finish:
+  - sh: docker rm oll-archive-automation-$APPVEYOR_BUILD_NUMBER
+
 build_script:
-  - sh: docker run --mount type=volume,src=$APPVEYOR_BUILD_FOLDER,dst=/home/oll/law-xml -e GH_SSH_PRIVATE_KEY=$GH_SSH_PRIVATE_KEY oll/archive-automation
+  - sh: docker run -e --name "oll-archive-automation-$APPVEYOR_BUILD_NUMBER" oll/archive-automation
 
 notifications:
   - provider: Slack
