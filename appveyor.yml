@@ -4,11 +4,46 @@ image: Ubuntu
 # Do not build feature branch with open Pull Requests
 skip_branch_with_pr: true
 
-on_finish:
-  - sh: docker rm oll-archive-automation-$APPVEYOR_BUILD_NUMBER
+init:
+  - sh: $IMAGE_NAME="oll/archive-automation-dev:latest"
+  - sh: $CONTAINER_NAME="oll-archive-automation-dev-${APPVEYOR_PROJECT_SLUG}-${APPVEYOR_BUILD_NUMBER}"
+
+before_build:
+  - sh: >-
+      if ! docker image inspect "${IMAGE_NAME}" > /dev/null 2>&1
+      then
+        echo "> IMAGE '$IMAGE_NAME' DOES NOT EXIST."
+        # TODO: DOWNLOAD THE IMAGE
+      fi
+      if docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME" > /dev/null 2>&1
+      then
+        if [[ "$(docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME")" == "running" ]]
+        then
+          echo "> CONTAINER ${CONTAINER_NAME} IS RUNNING!"
+          # TODO: WHAT NOW?
+        else
+          echo "> CONTAINER ${CONTAINER_NAME} ALREADY EXISTS; REMOVING IT"
+          docker rm $CONTAINER_NAME
+        fi
+      fi
 
 build_script:
-  - sh: docker run -e --name "oll-archive-automation-$APPVEYOR_BUILD_NUMBER" oll/archive-automation
+  - sh: >-
+      docker run --rm \
+        -e GH_SSH_PRIVATE_KEY="${GH_SSH_PRIVATE_KEY}" \
+        -e APPVEYOR_REPO_NAME="${APPVEYOR_REPO_NAME}" \
+        -e APPVEYOR_REPO_COMMIT="${APPVEYOR_REPO_COMMIT}" \
+        -e PIP_INDEX_URL="${PIP_INDEX_URL}" \
+        -e PIP_EXTRA_INDEX_URL="${PIP_EXTRA_INDEX_URL}" \
+        -e PLATFORM_BRANCH="${PLATFORM_BRANCH}" \
+        -e CLIENT_ID="${CLIENT_ID}" \
+        -e TENANT_ID="${TENANT_ID}" \
+        -e CLIENT_SECRET="${CLIENT_SECRET}" \
+        -e PREPARE_BUILD_COMMAND="${PREPARE_BUILD_COMMAND}" \
+        --name "${CONTAINER_NAME}" --cap-add SYS_ADMIN --privileged "${IMAGE_NAME}"
+
+on_finish:
+  - sh: docker rm $CONTAINER_NAME
 
 notifications:
   - provider: Slack
