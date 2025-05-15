@@ -10,10 +10,9 @@ init:
 
 before_build:
   - sh: >-
-      if ! docker image inspect "${IMAGE_NAME}" > /dev/null 2>&1;
-      then;
-        echo "> IMAGE '$IMAGE_NAME' DOES NOT EXIST.";
-      fi;
+      if ! docker image inspect "${IMAGE_NAME}" > /dev/null 2>&1; then
+      :;  echo "> IMAGE '$IMAGE_NAME' DOES NOT EXIST.";
+      fi
   - sh: >-
       if docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME" > /dev/null 2>&1
       then
