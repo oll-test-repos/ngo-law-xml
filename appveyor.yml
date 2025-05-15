@@ -13,14 +13,13 @@ before_build:
       if ! docker image inspect "${IMAGE_NAME}" > /dev/null 2>&1
       then
         echo "> IMAGE '$IMAGE_NAME' DOES NOT EXIST."
-        # TODO: DOWNLOAD THE IMAGE
       fi
+  - sh: >-
       if docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME" > /dev/null 2>&1
       then
         if [[ "$(docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME")" == "running" ]]
         then
           echo "> CONTAINER ${CONTAINER_NAME} IS RUNNING!"
-          # TODO: WHAT NOW?
         else
           echo "> CONTAINER ${CONTAINER_NAME} ALREADY EXISTS; REMOVING IT"
           docker rm $CONTAINER_NAME
