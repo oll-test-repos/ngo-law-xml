@@ -5,8 +5,8 @@ image: Ubuntu
 skip_branch_with_pr: true
 
 init:
-  - sh: $IMAGE_NAME="oll/archive-automation-dev:latest"
-  - sh: $CONTAINER_NAME="oll-archive-automation-dev-${APPVEYOR_PROJECT_SLUG}-${APPVEYOR_BUILD_NUMBER}"
+  - sh: IMAGE_NAME="oll/archive-automation-dev:latest"
+  - sh: CONTAINER_NAME="oll-archive-automation-dev-${APPVEYOR_PROJECT_SLUG}-${APPVEYOR_BUILD_NUMBER}"
 
 before_build:
   - sh: >-
