@@ -14,15 +14,14 @@ before_build:
       :;  echo "> IMAGE '$IMAGE_NAME' DOES NOT EXIST.";
       fi
   - sh: >-
-      if docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME" > /dev/null 2>&1
-      then
-        if [[ "$(docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME")" == "running" ]]
-        then
-          echo "> CONTAINER ${CONTAINER_NAME} IS RUNNING!"
-        else
-          echo "> CONTAINER ${CONTAINER_NAME} ALREADY EXISTS; REMOVING IT"
-          docker rm $CONTAINER_NAME
-        fi
+      if docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME" > /dev/null 2>&1; then
+      :;  if [[ "$(docker inspect -f '{{.State.Status}}' "$CONTAINER_NAME")" == "running" ]]; then
+      :;    echo "> CONTAINER ${CONTAINER_NAME} IS RUNNING!";
+      :;    exit 1;
+      :;  else
+      :;    echo "> CONTAINER ${CONTAINER_NAME} ALREADY EXISTS; REMOVING IT";
+      :;    docker rm $CONTAINER_NAME;
+      :;  fi
       fi
 
 build_script:
